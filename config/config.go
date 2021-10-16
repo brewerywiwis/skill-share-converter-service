@@ -12,10 +12,6 @@ type RabbitConfig struct {
 	HOST                  string
 	PORT                  string
 	SensorGatewayExchange string
-	EarthQueue            string
-	MercuryQueue          string
-	MarsQueue             string
-	KeplerQueue           string
 	RoutingKeySuffix      string
 }
 
@@ -47,10 +43,6 @@ func GetRabbitMQConfig() *RabbitConfig {
 			HOST:                  viper.GetString("rabbit_mq.host"),
 			PORT:                  viper.GetString("rabbit_mq.port"),
 			SensorGatewayExchange: viper.GetString("rabbit_mq.sensorGatewayExchange"),
-			EarthQueue:            viper.GetString("rabbit_mq.earthQueue"),
-			MercuryQueue:          viper.GetString("rabbit_mq.mercuryQueue"),
-			MarsQueue:             viper.GetString("rabbit_mq.marsQueue"),
-			KeplerQueue:           viper.GetString("rabbit_mq.keplerQueue"),
 			RoutingKeySuffix:      viper.GetString("rabbit_mq.routingSuffix"),
 		}
 

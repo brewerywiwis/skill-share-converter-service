@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  converter1:
+    build: .
+    environment:
+      - QUEUE_NAME=converter

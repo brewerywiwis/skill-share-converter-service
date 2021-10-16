@@ -10,4 +10,4 @@ RUN go mod download
 
 RUN go build -o /app_exe
 
-CMD /app_exe $PLANET
+CMD /app_exe $QUEUE_NAME

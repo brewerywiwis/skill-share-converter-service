@@ -1,12 +1,17 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"os"
 	"receiver/config"
 	"receiver/database"
 	"receiver/mq"
 )
+
+type ConverterMessage struct {
+	VideoLink string `json:"video_link"`
+}
 
 func failOnError(err error, msg string) {
 	if err != nil {
@@ -40,8 +45,9 @@ func main() {
 
 	go func() {
 		for d := range msgs {
-			log.Printf("Received a message: %s", d.Body)
-			d.Ack(false)
+			var data ConverterMessage
+			json.Unmarshal(d.Body, &data)
+			log.Printf("Received a message: %s", data)
 		}
 	}()
 
