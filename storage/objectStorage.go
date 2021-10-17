@@ -3,7 +3,6 @@ package storage
 import (
 	"bytes"
 	"errors"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -84,7 +83,7 @@ func UploadDirToS3(dir string) {
 		go putInS3(pathOfFile, &wg)
 	}
 	wg.Wait()
-	fmt.Println("All files are uploaded")
+	log.Println("All files are uploaded")
 }
 func PreprocessPath(path string, tmpDirName string) (string, error) {
 	i := strings.LastIndex(path, tmpDirName)
@@ -151,6 +150,6 @@ func DownloadFromS3Bucket(key, pathToSave string) error {
 		return err
 	}
 
-	fmt.Println("Downloaded")
+	log.Println("Downloaded")
 	return nil
 }

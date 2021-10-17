@@ -32,10 +32,9 @@ func Convert(filePath string) {
 	log.Println("Converted")
 	directoryPath := strings.TrimSuffix(filePath, ".mp4")
 	storage.UploadDirToS3(directoryPath)
-	// fmt.Println("S3 Uploaded")
 	err = os.RemoveAll(directoryPath)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	log.Println("Finished")
 }
@@ -73,7 +72,7 @@ func main() {
 				log.Println("Cannot find key from message")
 				return
 			}
-			log.Println(key)
+			// log.Println(key)
 			root, err := os.Getwd()
 			if err != nil {
 				log.Println("Cant get root dir")
@@ -83,10 +82,10 @@ func main() {
 			filePath := filepath.Join(root, "tmp", fileName)
 			storage.DownloadFromS3Bucket(key, filePath)
 			Convert(filePath)
-			// err = os.Remove(filePath)
-			// if err != nil {
-			// 	log.Println(err)
-			// }
+			err = os.Remove(filePath)
+			if err != nil {
+				log.Println(err)
+			}
 		}
 	}()
 
