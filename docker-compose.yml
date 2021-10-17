@@ -5,3 +5,15 @@ services:
     build: .
     container_name: 'converter1'
     restart: always
+  converter2:
+    build: .
+    container_name: 'converter2'
+    restart: always
+  converter3:
+    build: .
+    container_name: 'converter3'
+    restart: always
+  converter4:
+    build: .
+    container_name: 'converter4'
+    restart: always

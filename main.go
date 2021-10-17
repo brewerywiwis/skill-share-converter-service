@@ -24,9 +24,9 @@ func failOnError(err error, msg string) {
 
 func Convert(filePath string) {
 	cmd := exec.Command("bash", "create-vod-hls.sh", filePath)
-	bytes, err := cmd.Output()
+	bytes, err := cmd.CombinedOutput()
 	if err != nil {
-		log.Println(string(bytes), err.Error())
+		log.Println(string(bytes), err)
 		return
 	}
 	log.Println("Converted")
