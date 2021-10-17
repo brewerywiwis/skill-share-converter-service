@@ -16,13 +16,22 @@ type RabbitConfig struct {
 }
 
 type DatabaseConfig struct {
-	URL        string
-	DB_NAME    string
-	BACKEND_DB string
+	URL     string
+	DB_NAME string
+}
+
+type S3Config struct {
+	S3_REGION        string
+	S3_BUCKET        string
+	S3_ACCESS_KEY_ID string
+	S3_SECRET_KEY    string
+	S3_RAW_VIDEO_KEY string
+	S3_HLS_VIDEO_KEY string
 }
 
 var rabbitMQ *RabbitConfig
 var databaseConfig *DatabaseConfig
+var s3Config *S3Config
 
 func Init() {
 	viper.SetConfigName("config") // name of config file (without extension)
@@ -53,10 +62,23 @@ func GetRabbitMQConfig() *RabbitConfig {
 func GetDatabaseConfig() *DatabaseConfig {
 	if databaseConfig == nil {
 		databaseConfig = &DatabaseConfig{
-			URL:        viper.GetString("mongo.url"),
-			DB_NAME:    viper.GetString("mongo.db_name"),
-			BACKEND_DB: viper.GetString("mongo.backend_db"),
+			URL:     viper.GetString("mongo.url"),
+			DB_NAME: viper.GetString("mongo.db_name"),
 		}
 	}
 	return databaseConfig
+}
+
+func GetS3Config() *S3Config {
+	if s3Config == nil {
+		s3Config = &S3Config{
+			S3_REGION:        viper.GetString("aws.s3_region"),
+			S3_BUCKET:        viper.GetString("aws.s3_bucket"),
+			S3_ACCESS_KEY_ID: viper.GetString("aws.s3_access_key_id"),
+			S3_SECRET_KEY:    viper.GetString("aws.s3_secret_key"),
+			S3_RAW_VIDEO_KEY: viper.GetString("aws.s3_raw_video_key"),
+			S3_HLS_VIDEO_KEY: viper.GetString("aws.s3_hls_video_key"),
+		}
+	}
+	return s3Config
 }

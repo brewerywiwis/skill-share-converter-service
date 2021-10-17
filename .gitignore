@@ -20,3 +20,4 @@
 /Godeps/
 
 **/config.yaml
+/tmp/**/*

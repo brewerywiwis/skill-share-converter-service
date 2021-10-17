@@ -3,5 +3,5 @@ version: '3.7'
 services:
   converter1:
     build: .
-    environment:
-      - QUEUE_NAME=converter
+    container_name: 'converter1'
+    restart: always

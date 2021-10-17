@@ -3,7 +3,7 @@ package mq
 import (
 	"fmt"
 	"log"
-	"receiver/config"
+	"skillshare/converter/config"
 
 	"github.com/streadway/amqp"
 )
