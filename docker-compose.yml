@@ -2,18 +2,27 @@ version: '3.7'
 
 services:
   converter1:
-    build: .
+    image: brewder123/skill-share-converter-service
     container_name: 'converter1'
     restart: always
   converter2:
-    build: .
+    image: brewder123/skill-share-converter-service
     container_name: 'converter2'
     restart: always
   converter3:
-    build: .
+    image: brewder123/skill-share-converter-service
     container_name: 'converter3'
     restart: always
-  converter4:
-    build: .
-    container_name: 'converter4'
-    restart: always
+
+# version: '3.7'
+# services:
+#   converter-app:
+#     image: brewder123/skill-share-converter-service:1.0
+#     restart: always
+#     container_name: converter-app
+#     deploy:
+#       resources:
+#         limits:
+#           memory: 1024M
+#     ports:
+#       - "9991:888/tcp"
