@@ -77,7 +77,7 @@ done
 # start conversion
 echo -e "Executing command:\nffmpeg ${misc_params} -i ${source} ${cmd}"
 ffmpeg ${misc_params} -i ${source} ${cmd}
-
+ffmpeg -i ${source} -r 1 -ss 00:00:10 -vframes 1 ${target}/poster.jpg
 # create master playlist file
 echo -e "${master_playlist}" > ${target}/playlist.m3u8
 
